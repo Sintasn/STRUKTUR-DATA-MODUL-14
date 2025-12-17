@@ -1,0 +1,41 @@
+#ifndef GRAPH_H
+#define GRAPH_H
+#include <iostream>
+
+using namespace std;
+
+typedef char infoGraph;
+
+typedef struct ElmNode *adrNode;
+typedef struct ElmEdge *adrEdge;
+
+struct ElmNode {
+    infoGraph info;
+    int visited;
+    adrEdge firstEdge;
+    adrNode next;
+};
+
+struct ElmEdge {
+    adrNode node;
+    adrEdge next;
+};
+
+struct Graph {
+    adrNode first;
+};
+
+void CreateGraph(Graph &G);
+adrNode AllocateNode(infoGraph X);
+adrEdge AllocateEdge(adrNode N);
+
+void InsertNode(Graph &G, infoGraph X);
+void ConnectNode(Graph &G, adrNode N1, adrNode N2);
+void PrintInfoGraph(Graph G);
+
+adrNode FindNode(Graph G, infoGraph X);
+void PrintDFS(Graph G, adrNode N);
+void PrintBFS(Graph G, adrNode N);
+void ResetVisited(Graph &G);
+
+#endif
